@@ -37,6 +37,32 @@ function desenhaBoneco(){
     indiceBoneco++; 
 }
 
+// obejto com as palavras e categorias
+const categorias = {
+    frutas:     ["banana", "maca", "laranja", "mamao", "uva", "melancia", "melao"],
+    profissoes: ["engenheiro", "advogado", "enfermeiro", "professor", "pescador"],
+    cores:      ["preto", "azul", "amarelo", "roxo", "vermelho", "verde", "marrom"],
+    animais:    ["papagaio", "galo", "cachorro", "gato", "galinha", "cavalo"]
+
+}
+
+// retorna lista com as cateogiras da array
+function retornaArrayCat(){
+    return Object.keys(categorias);
+}
+
+
+function retornaCat(){
+    const arrayCat = retornaArrayCat();
+    let indiceCat = Math.floor(Math.random() * arrayCat.length);
+    return arrayCat[indiceCat];
+}
+
+
+function exibeCat(){
+    categoria.innerHTML = retornaCat();
+}
+
 /* 
 Desenha os olhos do personagem
 */
@@ -65,6 +91,7 @@ Inicia as configurações do jogo
 function iniciaJogo(){
     indiceBoneco = 0;
     letrasErradasArray = [];
+    exibeCat();
     letrasErradas.innerHTML = "Letras erradas: ";
     window.addEventListener("keypress", retornaLetra);
 }
