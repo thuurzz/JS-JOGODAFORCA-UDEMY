@@ -29,6 +29,29 @@ function retornaLetra(e){
     tentativa(e.key);
 }
 
+function tentativa(letra){
+    if (palavraProposta.includes(letra)){
+        atualizaPavraInterface(letra);
+    }else{
+
+    }
+}
+
+
+function atualizaPavraInterface(letra){
+    let palavraAux = "";
+    for(i=0;i<palavraProposta.length;i++){
+        if(palavraProposta[i] === letra){
+            palavraAux += letra;
+        }else if (palavraInterface.innerHTML[i] != "-"){
+            palavraAux += palavraInterface.innerHTML[i];
+        }else{
+            palavraAux += "-";
+        }
+    }
+    exibePalavraInterface(palavraAux);
+}
+
 /*
 Desenha a parte do corpo corrente
 */
