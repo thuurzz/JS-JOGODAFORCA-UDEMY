@@ -33,7 +33,11 @@ function tentativa(letra){
     if (palavraProposta.includes(letra)){
         atualizaPavraInterface(letra);
     }else{
-
+        letrasErradasArray.push(letra);
+        letrasErradas.innerHTML = "Letras erradas:" + letrasErradasArray;
+        if (partesBoneco.length > indiceBoneco){
+            desenhaBoneco();
+        }
     }
 }
 
