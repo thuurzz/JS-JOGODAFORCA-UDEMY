@@ -39,6 +39,18 @@ function tentativa(letra){
             desenhaBoneco();
         }
     }
+    verificaFimDeJogo();
+}
+
+function verificaFimDeJogo(){
+    if (!palavraInterface.innerHTML.includes("-")){
+        exibePalavraInterface("Acertou miseravi!")
+        window.removeEventListener("keypress", retornaLetra);
+    }else if(letrasErradasArray.length >= numTentativas){
+        desenhaOlhos();
+        exibePalavraInterface("ÉROU! Tente de novo!")
+        window.removeEventListener("keypress", retornaLetra);
+    }
 }
 
 
@@ -141,6 +153,7 @@ Inicia as configurações do jogo
 function iniciaJogo(){
     indiceBoneco = 0;
     letrasErradasArray = [];
+    ocultaBoneco();
     exibeCat();
     definePalavraProposta();
     letrasErradas.innerHTML = "Letras erradas: ";
