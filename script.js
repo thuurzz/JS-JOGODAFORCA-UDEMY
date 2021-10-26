@@ -43,7 +43,6 @@ const categorias = {
     profissoes: ["engenheiro", "advogado", "enfermeiro", "professor", "pescador"],
     cores:      ["preto", "azul", "amarelo", "roxo", "vermelho", "verde", "marrom"],
     animais:    ["papagaio", "galo", "cachorro", "gato", "galinha", "cavalo"]
-
 }
 
 // retorna lista com as cateogiras da array
@@ -54,13 +53,37 @@ function retornaArrayCat(){
 
 function retornaCat(){
     const arrayCat = retornaArrayCat();
-    let indiceCat = Math.floor(Math.random() * arrayCat.length);
+    let indiceCat = retornaNumAleatorio(arrayCat.length);
     return arrayCat[indiceCat];
 }
 
 
 function exibeCat(){
     categoria.innerHTML = retornaCat();
+}
+
+function retornaNumAleatorio(max){
+    return Math.floor(Math.random() * max);
+}
+
+function definePalavraProposta(){
+    const arrayPalavras = categorias[categoria.innerHTML];
+    let indicePalavra = retornaNumAleatorio(arrayPalavras.length);
+    palavraProposta = arrayPalavras[indicePalavra];
+    console.log(palavraProposta);
+    ocultaPalavra(palavraProposta);
+}
+
+function ocultaPalavra(palavra){
+    palavraOcultada = "";
+    for (i = 0; i < palavra.length ;i++){
+        palavraOcultada += "-";
+    }
+    exibePalavraInterface(palavraOcultada);
+}
+
+function exibePalavraInterface(palavra){
+    palavraInterface.innerHTML = palavra;
 }
 
 /* 
@@ -75,7 +98,7 @@ function desenhaOlhos(){
 
 /*
 Oculta as partes do corpo do personagem
-*/
+*/  
 function ocultaBoneco(){
     olhos.forEach((olho => {
         olho.style.opacity = opacidadeOlhos; 
@@ -92,6 +115,7 @@ function iniciaJogo(){
     indiceBoneco = 0;
     letrasErradasArray = [];
     exibeCat();
+    definePalavraProposta();
     letrasErradas.innerHTML = "Letras erradas: ";
     window.addEventListener("keypress", retornaLetra);
 }
