@@ -44,11 +44,11 @@ function tentativa(letra){
 
 function verificaFimDeJogo(){
     if (!palavraInterface.innerHTML.includes("-")){
-        exibePalavraInterface("Acertou miseravi!")
+        exibePalavraInterface("Acertou miseravi! Palavra: " + palavraProposta)
         window.removeEventListener("keypress", retornaLetra);
     }else if(letrasErradasArray.length >= numTentativas){
         desenhaOlhos();
-        exibePalavraInterface("ÉROU! Tente de novo!")
+        exibePalavraInterface("ÉROU! Tente de novo! Palavra: " + palavraProposta);
         window.removeEventListener("keypress", retornaLetra);
     }
 }
